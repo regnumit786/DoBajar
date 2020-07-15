@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CheckOut.Review"
+    android:orientation="vertical"
+    android:background="#ECECEC">
+
+    <TextView
+        android:id="@+id/shippingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="5sp"
+        android:layout_gravity="center"
+        android:text="Review"
+        android:background="@drawable/button_corner_offer"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginStart="5sp"
+        android:layout_marginEnd="5sp"
+        android:layout_gravity="center"
+        android:src="@drawable/three"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        app:cardCornerRadius="10sp"
+        app:cardElevation="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Product info"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="#aaa"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:text="Product prize"
+                    android:paddingStart="10sp"
+                    android:layout_marginTop="5sp"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="65 ৳"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10sp">
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery Prize"
+                    android:paddingStart="10sp"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="50 ৳"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="#aaa"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5sp">
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"
+                    android:text="Total: "
+                    android:paddingStart="10sp"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="0sp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="110 ৳"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        app:cardElevation="10sp"
+        app:cardCornerRadius="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delivery Address"
+                android:textSize="16sp"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="#aaa"/>
+
+
+            <TextView
+                android:id="@+id/txt_review_delivery_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Habib"
+                android:textSize="12sp"
+                android:paddingStart="10sp"
+                android:layout_marginTop="5sp"/>
+
+            <TextView
+                android:id="@+id/txt_review_delivery_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="01715544879"
+                android:textSize="12sp"
+                android:paddingStart="10sp"
+                android:layout_marginTop="5sp"/>
+
+            <TextView
+                android:id="@+id/txt_review_delivery_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="52/4 west raza bazar, tejgaoun, dhaka 1205"
+                android:textSize="12sp"
+                android:paddingStart="10sp"
+                android:layout_marginTop="5sp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        app:cardCornerRadius="10sp"
+        app:cardElevation="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="10sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Payment Method"
+                android:gravity="center"
+                android:textSize="16sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1sp"
+                android:background="#aaa"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5sp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/review_payment_image"
+                    android:layout_width="64sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/cashon" />
+
+                <TextView
+                    android:id="@+id/review_payment_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="Cash"
+                    android:layout_marginStart="30sp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_delivery_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="56sp"
+        android:text="Confirm"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

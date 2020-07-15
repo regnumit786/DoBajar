@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">DoBajar</string>
+
+    <string name="google_place_api">AIzaSyCoNjR24dThXz1IEec8A_J1RleABrx3hQo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Uzzal Talukdar</string>
+    <string name="nav_header_subtitle">uzzalTalukdar@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_shop">Home</string>
+    <string name="title_gifts">gifts</string>
+    <string name="title_cart">cart</string>
+    <string name="title_profile">profile</string>
+
+
+    <string name="show_address">Show your address</string>
+
+    <integer name="slide_animation_duration">300</integer>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_pass">Password</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="only_for_you">Only For you</string>
+    <string name="title_activity_product">Product_Activity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="buy_now">BUY NOW</string>
+
+    <string name="title_activity_shipment">ShipmentActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="buy_your_product">Daily needs online</string>
+    <string name="meena_bazar">Meena Bazar</string>
+    <string name="shwapno">Shwapno</string>
+    <string name="prince_bazar">Prince Bazar</string>
+    <string name="agora">Agora</string>
+    <string name="unimart">Unimart</string>
+    <string name="daily_shop">Daily Shop</string>
+    <string name="action_share">Share</string>
+    <string name="action_logout">Log Out</string>
+    <string name="action_communication">communication</string>
+
+    <string-array name="location_spnnir">
+        <item>Gulshan</item>
+        <item>Banani</item>
+        <item>Rampura</item>
+    </string-array>
+
+    <string name="SUPER_SHOP_CATEGORIES">SUPER_SHOP</string>
+
+</resources>

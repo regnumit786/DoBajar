@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8sp"
+    android:background="@color/black"
+    android:weightSum="4"
+    tools:context=".Loged.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/splash_imageview"
+            android:layout_width="120sp"
+            android:layout_height="120dp"
+            android:src="@drawable/launchinglogo"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_marginStart="20sp"
+        android:layout_marginEnd="20sp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="#F5F5F5"
+            app:cardCornerRadius="15sp"
+            app:cardElevation="20sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginEnd="20sp"
+                android:layout_marginBottom="10sp"
+                android:orientation="vertical"
+                android:background="#F5F5F5"
+                android:weightSum="4.5">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight=".7"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15sp"
+                    app:cardElevation="20sp">
+
+
+                    <EditText
+                        android:id="@+id/edlogPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="01717722666"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:background="@drawable/cart_button_corner_white"
+                        android:maxLines="1"
+                        android:paddingStart="15sp"
+                        android:paddingEnd="0sp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight=".7"
+                    android:layout_marginTop="10sp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15sp"
+                    app:cardElevation="20sp">
+
+                    <EditText
+                        android:id="@+id/edlogPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="password"
+                        android:background="@drawable/cart_button_corner_white"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:paddingStart="15sp"
+                        android:paddingEnd="0sp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0sp"
+                    android:layout_weight="1" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150sp"
+                    android:layout_height="0sp"
+                    android:layout_gravity="center"
+                    android:layout_weight=".8"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="15sp"
+                    app:cardElevation="20sp">
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5sp"
+                        android:background="@color/white"
+                        android:text="log in" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/gotoregister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50sp"
+            android:text="i have no account"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

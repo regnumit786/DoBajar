@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="50sp"
+    android:paddingLeft="20sp"
+    android:paddingRight="20sp"
+    android:paddingBottom="20sp"
+    tools:context=".Paypal.Payment">
+
+    <EditText
+        android:id="@+id/edtAmount"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_gravity="center"
+        android:inputType="number"
+        android:maxLines="1"
+        android:hint="Enter Amount" />
+
+    <Button
+        android:id="@+id/btnPayNow"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/button_cornr_app_color"
+        android:text="Pay Now" />
+
+</LinearLayout>

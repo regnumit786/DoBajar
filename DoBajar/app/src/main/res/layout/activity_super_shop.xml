@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SuperShop">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10sp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120sp"
+                app:cardCornerRadius="10sp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="9"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0sp"
+                        android:layout_weight="4.4"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10sp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/goto_meenabazar"
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/meenaclick"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="30sp"
+                                android:text="Meena Bazar"
+                                android:textColor="@color/white"
+                                android:paddingStart="10sp"
+                                android:textSize="18sp"
+                                android:background="@color/low_black"
+                                android:paddingLeft="10sp" />
+
+                        </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:layout_width="0sp"
+                        android:layout_weight=".1"
+                        android:layout_height="match_parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0sp"
+                        android:layout_weight="4.5"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10sp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/goto_showpno"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/sowopno"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30sp"
+                            android:text="Shwapno"
+                            android:textColor="@color/white"
+                            android:paddingStart="10sp"
+                            android:textSize="16sp"
+                            android:background="@color/low_black"
+                            android:paddingLeft="10sp" />
+
+                    </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150sp"
+                app:cardCornerRadius="10sp"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/goto_augora"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/augora"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:text="Agora"
+                    android:textColor="@color/white"
+                    android:paddingStart="10sp"
+                    android:textSize="20sp"
+                    android:background="@color/low_black"
+                    android:paddingLeft="10sp" />
+
+            </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="120sp"
+                app:cardCornerRadius="10sp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:weightSum="9"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0sp"
+                        android:layout_weight="4.4"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10sp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/goto_dailyshop"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/dailyshop"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30sp"
+                            android:text="Daily Shop"
+                            android:textColor="@color/white"
+                            android:paddingStart="10sp"
+                            android:textSize="16sp"
+                            android:background="@color/low_black"
+                            android:paddingLeft="10sp" />
+
+                    </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:layout_width="0sp"
+                        android:layout_weight=".1"
+                        android:layout_height="match_parent"/>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0sp"
+                        android:layout_weight="4.5"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10sp"
+                        app:cardBackgroundColor="@color/white">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/goto_princebajar"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/princebajar"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30sp"
+                            android:text="Prince Bazar"
+                            android:textColor="@color/white"
+                            android:paddingStart="10sp"
+                            android:textSize="16sp"
+                            android:background="@color/low_black"
+                            android:paddingLeft="10sp" />
+
+                    </RelativeLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5sp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150sp"
+                app:cardCornerRadius="10sp"
+                app:cardBackgroundColor="@color/white">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/goto_unimart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/unimart"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:text="Unimart"
+                    android:textColor="@color/white"
+                    android:paddingStart="10sp"
+                    android:textSize="20sp"
+                    android:background="@color/low_black"
+                    android:paddingLeft="10sp" />
+
+            </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

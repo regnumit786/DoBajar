@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".CheckOut.PaymentSelect"
+    android:orientation="vertical"
+    android:background="#E6E3E3">
+
+    <TextView
+        android:id="@+id/shippingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginTop="5sp"
+        android:layout_marginEnd="5sp"
+        android:layout_marginStart="5sp"
+        android:layout_gravity="center"
+        android:text="Select Payment"
+        android:background="@drawable/button_corner_offer"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginStart="5sp"
+        android:layout_marginEnd="5sp"
+        android:src="@drawable/two"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_margin="5sp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCashon"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/cashon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Cash"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_master_card"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mastercard" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Master Card"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_visa_card"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/visacard" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Visa Card"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="3"
+            android:layout_margin="5sp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_paypal_card"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/paypal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="PayPal"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_duch_bangla"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/duchbangla" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="DuchBangla"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_bkash"
+                android:layout_width="0sp"
+                android:layout_weight=".7"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                app:cardCornerRadius="10sp"
+                app:cardElevation="10sp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="44sp"
+                        android:layout_height="32sp"
+                        android:layout_gravity="center"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bkash" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="BKash"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/payment_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+            android:text="next"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/white"
+            android:background="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

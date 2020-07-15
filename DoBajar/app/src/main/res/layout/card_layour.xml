@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="?attr/actionBarSize"
+    android:layout_height="?attr/actionBarSize">
+
+    <ImageButton
+        android:id="@+id/toolberCard"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:background="@drawable/cart"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/toolbarText"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:background="@drawable/cart_button_corner_white"
+        android:layout_marginBottom="10sp"
+        android:layout_marginStart="10sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="0sp" />
+
+</FrameLayout>
