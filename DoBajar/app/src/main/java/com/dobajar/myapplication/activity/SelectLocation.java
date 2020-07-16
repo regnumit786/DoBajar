@@ -75,6 +75,7 @@ public class SelectLocation extends FragmentActivity implements OnMapReadyCallba
                 } else {
                     txtShowAddress.setVisibility(View.VISIBLE);
                     txtShowAddress.setText(strAdd);
+                    Log.i("your_location",txtShowAddress.getText().toString());
                     countAddress++;
                 }
             }

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundWhite"
     android:orientation="vertical"
     android:padding="8sp"
-    android:background="@color/black"
     android:weightSum="4"
     tools:context=".Loged.Login">
 
@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
+        android:background="@color/backgroundWhite"
         android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -21,7 +22,7 @@
             android:layout_width="120sp"
             android:layout_height="120dp"
             android:src="@drawable/launchinglogo"
-            app:civ_border_color="@color/white"
+            app:civ_border_color="@color/black"
             app:civ_border_width="2dp" />
 
     </LinearLayout>
@@ -29,108 +30,94 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0sp"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20sp"
         android:layout_weight="2"
+        android:background="@color/backgroundWhite"
         android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardBackgroundColor="#F5F5F5"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="20sp">
+            android:layout_height="0sp"
+            android:layout_weight="1" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="20sp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1"
+            android:background="@color/backgroundWhite"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="300sp"
+                android:layout_height="40sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="20sp">
+
+
+                <EditText
+                    android:id="@+id/edlogPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cart_button_corner_white"
+                    android:hint="01717722666"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:paddingStart="15sp"
+                    android:paddingEnd="0sp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="300sp"
+                android:layout_height="40sp"
                 android:layout_marginTop="10sp"
-                android:layout_marginEnd="20sp"
-                android:layout_marginBottom="10sp"
-                android:orientation="vertical"
-                android:background="#F5F5F5"
-                android:weightSum="4.5">
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="20sp">
 
-                <androidx.cardview.widget.CardView
+                <EditText
+                    android:id="@+id/edlogPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="0sp"
-                    android:layout_weight=".7"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="20sp">
+                    android:layout_height="match_parent"
+                    android:background="@drawable/cart_button_corner_white"
+                    android:hint="password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingStart="15sp"
+                    android:paddingEnd="0sp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
+            </androidx.cardview.widget.CardView>
 
-                    <EditText
-                        android:id="@+id/edlogPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="01717722666"
-                        android:inputType="number"
-                        android:maxLength="11"
-                        android:background="@drawable/cart_button_corner_white"
-                        android:maxLines="1"
-                        android:paddingStart="15sp"
-                        android:paddingEnd="0sp"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="150sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="15sp"
+                app:cardElevation="20sp">
 
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
+                <Button
+                    android:id="@+id/btnLogin"
                     android:layout_width="match_parent"
-                    android:layout_height="0sp"
-                    android:layout_weight=".7"
-                    android:layout_marginTop="10sp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="20sp">
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:background="@color/white"
+                    android:textAllCaps="false"
+                    android:text="Log in" />
 
-                    <EditText
-                        android:id="@+id/edlogPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="password"
-                        android:background="@drawable/cart_button_corner_white"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:paddingStart="15sp"
-                        android:paddingEnd="0sp"
-                        android:singleLine="true"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+            </androidx.cardview.widget.CardView>
 
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0sp"
-                    android:layout_weight="1" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150sp"
-                    android:layout_height="0sp"
-                    android:layout_gravity="center"
-                    android:layout_weight=".8"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="15sp"
-                    app:cardElevation="20sp">
-
-                    <Button
-                        android:id="@+id/btnLogin"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5sp"
-                        android:background="@color/white"
-                        android:text="log in" />
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -138,6 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
+        android:background="@color/backgroundWhite"
         android:orientation="vertical">
 
         <TextView
@@ -147,7 +135,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="50sp"
             android:text="i have no account"
-            android:textColor="@color/white"
+            android:textColor="@color/red_bg"
             android:textSize="14sp" />
 
     </LinearLayout>

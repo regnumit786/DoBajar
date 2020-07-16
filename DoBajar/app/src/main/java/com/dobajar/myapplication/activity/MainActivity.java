@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -198,17 +199,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_meena_bazar) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","Meena Bazar");
+            startActivity(intent);
         } else if (id == R.id.nav_shwapno) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","Swapno");
+            startActivity(intent);
         } else if (id == R.id.nav_prince_bazar) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","Unimart");
+            startActivity(intent);
         } else if (id == R.id.nav_agora) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","AugoraShop");
+            startActivity(intent);
         } else if (id == R.id.nav_unimart) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","PrinceShop");
+            startActivity(intent);
         }else if (id == R.id.nav_daily_shop) {
-            startActivity(new Intent(MainActivity.this, AllCategories.class));
+            Intent intent= new Intent(MainActivity.this, AllCategories.class);
+            intent.putExtra("superShop","DailyShop");
+            startActivity(intent);
         } else if (id == R.id.nav_share){
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -273,5 +286,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int loadCardCount = sharedPref.getInt("cardCount", 0);
         cartText.setVisibility(View.VISIBLE);
         cartText.setText(String.valueOf(loadCardCount));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences sharedPref = getSharedPreferences("STORE_LOCATION", Context.MODE_PRIVATE);
+        String address= sharedPref.getString("your_home_address","default");
+        Log.i("main_Address_is: ",address);
+        if (address.isEmpty() || address.equals("default")){
+            Intent intent= new Intent(this, SelectLocation.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }

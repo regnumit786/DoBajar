@@ -25,6 +25,7 @@ import com.dobajar.myapplication.Model.Retrofit.ApiClint;
 import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
 import com.dobajar.myapplication.R;
 import com.dobajar.myapplication.activity.MainActivity;
+import com.dobajar.myapplication.activity.SelectLocation;
 
 import java.util.Objects;
 
@@ -61,6 +62,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this, Register.class));
+                finish();
             }
         });
 
@@ -114,10 +116,12 @@ public class Login extends AppCompatActivity {
                                            editor.commit();
 
                                            Toast.makeText(Login.this, "Log in successfully", Toast.LENGTH_SHORT).show();
-                                           startActivity(new Intent(Login.this, MainActivity.class));
+                                           startActivity(new Intent(Login.this, SelectLocation.class));
                                            edLogPhone.setText("");
                                            edLogPassword.setText("");
                                            finish();
+                                       } else {
+                                           Toast.makeText(Login.this, "Username or Email incorrect", Toast.LENGTH_SHORT).show();
                                        }
                                    }
 

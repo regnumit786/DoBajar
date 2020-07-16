@@ -47,6 +47,4 @@ public interface ApiClint {
     @GET("api/sub-categories")
     Call<SubCategorieModel> subCategoriesGet();
 
-
-
 }
