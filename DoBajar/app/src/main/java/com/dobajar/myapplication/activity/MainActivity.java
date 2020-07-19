@@ -1,6 +1,7 @@
 package com.dobajar.myapplication.activity;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -29,12 +30,22 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.dobajar.myapplication.Card.Cart_activity;
 import com.dobajar.myapplication.Loged.Login;
+import com.dobajar.myapplication.Model.Brand;
+import com.dobajar.myapplication.Model.BrandModel;
+import com.dobajar.myapplication.Model.Retrofit.ApiClint;
+import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
 import com.dobajar.myapplication.Profile.ProfileActivity;
 import com.dobajar.myapplication.R;
+import com.google.android.gms.common.api.Api;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,10 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView cardImage;
     private TextView cartText;
     MenuItem menuItem;
-
-    ViewFlipper viewFlip;
-    int[] image = {R.drawable.meenabazarslider, R.drawable.shwapnoslider, R.drawable.unimartslider, R.drawable.princebajarslider, R.drawable.dailyshopslider,
-            R.drawable.agoraslider};
+    private ApiClint apiClint;
+    private ProgressDialog progressDialog;
 
     private ImageView gotoSuperShop, gotoDobazarPackage, gotoHoleSell, gotoFamilyPack;
 
@@ -54,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        progressDialog= new ProgressDialog(this);
+        progressDialog.setTitle("Loading Data...");
+        progressDialog.setCancelable(true);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -129,6 +142,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, FamilyPackage.class));
+            }
+        });
+
+        LoadApi();
+
+    }
+
+    private void LoadApi(){
+        progressDialog.show();
+        apiClint= RetrofitClint.getRetrifitClint().create(ApiClint.class);
+
+        Call<List<Brand>> call= apiClint.brand();
+
+        call.enqueue(new Callback<List<Brand>>() {
+            @Override
+            public void onResponse(Call<List<Brand>> call, Response<List<Brand>> response) {
+                progressDialog.dismiss();
+                if (!response.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Response Failed", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Toast.makeText(MainActivity.this, "Response successfully", Toast.LENGTH_SHORT).show();
+                List<Brand> brand= response.body();
+
+                for (int i=0; i<brand.size(); i++) {
+                    if (i==0) {
+                        String image= brand.get(i).getImage();
+                        Picasso.get().load(image).error(R.mipmap.ic_launcher).into(gotoFamilyPack);
+                    }
+                    if (i==1){
+                        String image= brand.get(i).getImage();
+                        Picasso.get().load(image).error(R.mipmap.ic_launcher).into(gotoHoleSell);
+                    }
+
+                    Log.i("brandName", brand.get(i).getName());
+                    Log.i("brandImage", brand.get(i).getImage());
+                    Log.i("brandBannar", brand.get(i).getBanner());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Brand>> call, Throwable t) {
+                progressDialog.dismiss();
+                Log.i("Server_Failed: ",t.getMessage());
             }
         });
     }
@@ -240,16 +297,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void Flipper(int i){
-        ImageView imageView= new ImageView(this);
-        imageView.setBackgroundResource(i);
-        viewFlip.addView(imageView);
-        viewFlip.setFlipInterval(4000);
-        viewFlip.setAutoStart(true);
-        viewFlip.setInAnimation(this, android.R.anim.slide_in_left);
-        viewFlip.setOutAnimation(this, android.R.anim.slide_out_right);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
