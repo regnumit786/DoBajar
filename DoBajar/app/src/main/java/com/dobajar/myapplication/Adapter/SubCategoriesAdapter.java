@@ -65,9 +65,12 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, holder.nameText.getText().toString(), Toast.LENGTH_SHORT).show();
-                Intent intent= new Intent(context, Babarege.class);
-                context.startActivity(intent);
+                if (holder.nameText.toString().equals("Food")){
+                    Toast.makeText(context, holder.nameText.getText().toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent= new Intent(context, Babarege.class);
+                    intent.putExtra("subCategory",holder.nameText.toString());
+                    context.startActivity(intent);
+                }
             }
         });
     }

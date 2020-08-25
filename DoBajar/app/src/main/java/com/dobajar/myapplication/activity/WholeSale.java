@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dobajar.myapplication.R;
 
-public class HoleSell extends AppCompatActivity {
+public class WholeSale extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

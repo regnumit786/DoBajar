@@ -4,17 +4,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="320sp"
+    android:layout_height="match_parent"
     android:layout_weight="2"
     android:background="#F7F2F2"
-    android:padding="8sp"
+    android:padding="5sp"
     tools:context=".activity.Babarege">
 
     <androidx.cardview.widget.CardView
         android:layout_width="0sp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5sp">
+        android:layout_marginRight="5sp"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/layout_one"
@@ -121,7 +122,8 @@
         android:layout_width="0sp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5sp">
+        android:layout_marginLeft="5sp"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/layout_two"
@@ -223,5 +225,12 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/food_data_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

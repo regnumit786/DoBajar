@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,12 +30,10 @@ import com.denzcoskun.imageslider.models.SlideModel;
 import com.dobajar.myapplication.Card.Cart_activity;
 import com.dobajar.myapplication.Loged.Login;
 import com.dobajar.myapplication.Model.Brand;
-import com.dobajar.myapplication.Model.BrandModel;
 import com.dobajar.myapplication.Model.Retrofit.ApiClint;
 import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
 import com.dobajar.myapplication.Profile.ProfileActivity;
 import com.dobajar.myapplication.R;
-import com.google.android.gms.common.api.Api;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
@@ -134,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         gotoHoleSell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, HoleSell.class));
+                startActivity(new Intent(MainActivity.this, WholeSale.class));
             }
         });
 

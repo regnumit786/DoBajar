@@ -201,7 +201,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="5sp"
                 app:cardCornerRadius="10sp"
                 app:cardElevation="10sp">
@@ -215,7 +215,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Product info"
+                        android:text="Product Info"
                         android:textSize="16sp"
                         android:gravity="center"/>
 

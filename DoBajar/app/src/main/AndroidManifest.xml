@@ -30,9 +30,11 @@
         <activity android:name=".CheckOut.Review" />
         <activity android:name=".Card.CardProductDetails" />
         <activity android:name=".Profile.ProfileActivity" />
-        <activity android:name=".activity.HoleSell" />
+        <activity android:name=".activity.WholeSale"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.DoBazarPackage" />
-        <activity android:name=".activity.SuperShop" />
+        <activity android:name=".activity.SuperShop"
+            android:parentActivityName=".activity.MainActivity"/>
         <activity android:name=".activity.SelectLocation" />
         <activity android:name=".Loged.Register" />
         <activity android:name=".Loged.Login" />
@@ -41,8 +43,9 @@
         <activity android:name=".Card.Cart_activity" />
         <activity android:name=".activity.AllCategories" />
         <activity android:name=".activity.ProductDetails" />
-        <activity android:name=".activity.Babarege" />
-        <activity android:name=".activity.Bakery" />
+        <activity android:name=".activity.Babarege"
+            android:parentActivityName=".activity.AllCategories"/>
+        <activity android:name=".activity.Bakery"/>
         <activity android:name=".activity.Dairy" />
         <activity android:name=".activity.Products" />
         <activity android:name=".activity.PersonalCare" />

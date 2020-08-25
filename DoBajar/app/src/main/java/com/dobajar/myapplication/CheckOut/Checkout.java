@@ -16,15 +16,12 @@ import com.dobajar.myapplication.R;
 import com.dobajar.myapplication.activity.MainActivity;
 
 public class Checkout extends AppCompatActivity {
-
-    private Button gotoHome;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_out);
 
-        gotoHome= findViewById(R.id.goto_home);
+        Button gotoHome = findViewById(R.id.goto_home);
 
         gotoHome.setOnClickListener(new View.OnClickListener() {
             @Override

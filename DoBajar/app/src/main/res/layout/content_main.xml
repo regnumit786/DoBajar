@@ -168,7 +168,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Wholesale"
+                                    android:text=""
                                     android:textSize="18sp"
                                     android:paddingStart="10sp"
                                     android:paddingLeft="10sp"
@@ -205,12 +205,14 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="40sp"
-                            android:text="Family Package"
+                            android:text=""
                             android:textColor="@color/white"
                             android:paddingStart="10sp"
+                            android:paddingEnd="0sp"
                             android:textSize="20sp"
                             android:background="@color/low_black"
-                            android:paddingLeft="10sp" />
+                            android:paddingLeft="10sp"
+                            tools:ignore="RtlHardcoded" />
 
                     </RelativeLayout>
 

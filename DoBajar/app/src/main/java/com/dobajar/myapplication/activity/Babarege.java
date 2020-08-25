@@ -16,10 +16,18 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.dobajar.myapplication.Adapter.AllFragmentDataAdpr;
 import com.dobajar.myapplication.Card.Cart_activity;
+import com.dobajar.myapplication.Model.Retrofit.ApiClint;
+import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
+import com.dobajar.myapplication.Model.SubCategory.Subcategory;
 import com.dobajar.myapplication.R;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.OnItemClickListener {
@@ -34,6 +42,9 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
     private TextView cartText;
     private ImageView cardImage;
 
+    private ApiClint apiClint;
+    private RecyclerView foodDataRecycler;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +52,9 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
 
         FindAllView();
 
-        if (count>0){
+        LoadSubCategoryData();
+
+        /*if (count>0){
             addToBagText.setVisibility(View.GONE);
             productItemCount.setVisibility(View.VISIBLE);
             addToBagDecriment.setVisibility(View.VISIBLE);
@@ -136,9 +149,27 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
                     }
                 }
             }
-        });
+        });*/
+
+
 
         totalCartItem= addToCartItem1+addToCartItem2;
+    }
+
+    private void LoadSubCategoryData() {
+        apiClint= RetrofitClint.getRetrifitClint().create(ApiClint.class);
+        Call<Subcategory> call= apiClint.subCategoryList();
+        call.enqueue(new Callback<Subcategory>() {
+            @Override
+            public void onResponse(Call<Subcategory> call, Response<Subcategory> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Subcategory> call, Throwable t) {
+
+            }
+        });
     }
 
     private void FindAllView(){

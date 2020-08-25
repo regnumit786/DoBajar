@@ -1,5 +1,6 @@
 package com.dobajar.myapplication.Model.Retrofit;
 
+import com.dobajar.myapplication.Model.Brand;
 import com.dobajar.myapplication.Model.LoginResponse;
 import com.dobajar.myapplication.Model.Post;
 import com.dobajar.myapplication.Model.Products.AllProducts;
@@ -7,6 +8,7 @@ import com.dobajar.myapplication.Model.Products.Datum;
 import com.dobajar.myapplication.Model.SignUpPostModel;
 import com.dobajar.myapplication.Model.SubCategories;
 import com.dobajar.myapplication.Model.SubCategoriesModel.SubCategorieModel;
+import com.dobajar.myapplication.Model.SubCategory.Subcategory;
 import com.dobajar.myapplication.Model.SuperCategories;
 
 import java.util.List;
@@ -27,14 +29,6 @@ public interface ApiClint {
     );
 
     @FormUrlEncoded
-    @POST("posts")
-    Call<Post> fakePost (
-            @Field("userId") String userId,
-            @Field("title") String title,
-            @Field("body") String body
-    );
-
-    @FormUrlEncoded
     @POST("api/login")
     Call<LoginResponse> loginPost (
             @Field("phone_number") String userId,
@@ -46,5 +40,13 @@ public interface ApiClint {
 
     @GET("api/sub-categories")
     Call<SubCategorieModel> subCategoriesGet();
+
+    @GET("api/brands")
+    Call<List<Brand>> brand();
+
+    @GET("api/Food/subcategorious-products")
+    Call<Subcategory> subCategoryList();
+
+
 
 }
