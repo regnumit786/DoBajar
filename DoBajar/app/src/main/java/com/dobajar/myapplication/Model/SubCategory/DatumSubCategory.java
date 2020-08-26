@@ -12,7 +12,7 @@ public class DatumSubCategory {
     private String title;
     @SerializedName("image")
     @Expose
-    private List<String> image = null;
+    private String image = null;
     @SerializedName("description")
     @Expose
     private String description;
@@ -46,11 +46,11 @@ public class DatumSubCategory {
         this.title = title;
     }
 
-    public List<String> getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(List<String> image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -1,5 +1,6 @@
 package com.dobajar.myapplication.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,14 +17,19 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dobajar.myapplication.Adapter.AllFragmentDataAdpr;
+import com.dobajar.myapplication.Adapter.SubCategoryItem;
 import com.dobajar.myapplication.Card.Cart_activity;
 import com.dobajar.myapplication.Model.Retrofit.ApiClint;
 import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
 import com.dobajar.myapplication.Model.SubCategory.Subcategory;
 import com.dobajar.myapplication.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,136 +39,64 @@ import retrofit2.Response;
 public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.OnItemClickListener {
 
     private final String TAG= this.getClass().getSimpleName();
-    private ImageButton addToBagInciment, addToBagDecriment, addToBagInciment2, addToBagDecriment2;
-    private LinearLayout layout, layout2;
-    private TextView addToBagText, addToBagText2, productItemCount, productItemCount2;
-    int count=0;
-    int count2=0;
-    int loadCardCount=0, addToCartItem1=0, addToCartItem2=0, totalCartItem=0;
     private TextView cartText;
     private ImageView cardImage;
 
+    private ArrayList<String> itemTitle;
+    private ArrayList<String> itemImage;
+    private ArrayList<String> itemDescription;
+    private ArrayList<String> itemPrize;
+    private ArrayList<String> itemStock;
+    private SubCategoryItem subCategoryItem;
+
     private ApiClint apiClint;
     private RecyclerView foodDataRecycler;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.babarege);
 
-        FindAllView();
+        progressDialog= new ProgressDialog(this);
+        progressDialog.setTitle("Loading Data...");
+        progressDialog.setCancelable(true);
+
+
+        foodDataRecycler = findViewById(R.id.food_data_recycler_view);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2)  ;
+        foodDataRecycler.setLayoutManager(mLayoutManager);
+        foodDataRecycler.setHasFixedSize(true);
 
         LoadSubCategoryData();
-
-        /*if (count>0){
-            addToBagText.setVisibility(View.GONE);
-            productItemCount.setVisibility(View.VISIBLE);
-            addToBagDecriment.setVisibility(View.VISIBLE);
-        } else {
-            addToBagText.setVisibility(View.VISIBLE);
-            addToBagDecriment.setVisibility(View.GONE);
-            productItemCount.setVisibility(View.GONE);
-        }
-
-        if (count2>0){
-            addToBagText2.setVisibility(View.GONE);
-            productItemCount2.setVisibility(View.VISIBLE);
-            addToBagDecriment2.setVisibility(View.VISIBLE);
-        } else {
-            addToBagText2.setVisibility(View.VISIBLE);
-            addToBagDecriment2.setVisibility(View.GONE);
-            productItemCount2.setVisibility(View.GONE);
-        }
-
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareStoreData1();
-                startActivity(new Intent(Babarege.this, ProductDetails.class));
-            }
-        });
-
-        layout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareStoreData2();
-                startActivity(new Intent(Babarege.this, ProductDetails.class));
-            }
-        });
-
-        addToBagInciment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addToCartItem1=1;
-                count++;
-                addToBagText.setVisibility(View.GONE);
-                addToBagDecriment.setVisibility(View.VISIBLE);
-                productItemCount.setVisibility(View.VISIBLE);
-                productItemCount.setText(String.valueOf(count));
-                ShareStoreData1();
-            }
-        });
-
-        addToBagInciment2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addToCartItem2=1;
-                count2++;
-                Log.e("print count 2", String.valueOf(count2));
-                addToBagText2.setVisibility(View.GONE);
-                addToBagDecriment2.setVisibility(View.VISIBLE);
-                productItemCount2.setVisibility(View.VISIBLE);
-                productItemCount2.setText(String.valueOf(count2));
-                Log.e("print after show", productItemCount2.toString());
-                ShareStoreData2();
-            }
-        });
-
-        addToBagDecriment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (count>0){
-                    count--;
-                    productItemCount.setText(String.valueOf(count));
-                    if (count<=0){
-                        addToCartItem1= addToCartItem1-1;
-                        addToBagText.setVisibility(View.VISIBLE);
-                        addToBagDecriment.setVisibility(View.GONE);
-                        productItemCount.setVisibility(View.GONE);
-                    }
-                }
-            }
-        });
-
-        addToBagDecriment2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (count2>0){
-                    Log.e("print decrement", String.valueOf(count2));
-                    count2--;
-                    productItemCount2.setText(String.valueOf(count2));
-                    if (count2<=0){
-                        addToCartItem2= addToCartItem2-1;
-                        addToBagText2.setVisibility(View.VISIBLE);
-                        addToBagDecriment2.setVisibility(View.GONE);
-                        productItemCount2.setVisibility(View.GONE);
-                    }
-                }
-            }
-        });*/
-
-
-
-        totalCartItem= addToCartItem1+addToCartItem2;
     }
 
     private void LoadSubCategoryData() {
+        progressDialog.show();
         apiClint= RetrofitClint.getRetrifitClint().create(ApiClint.class);
         Call<Subcategory> call= apiClint.subCategoryList();
+
         call.enqueue(new Callback<Subcategory>() {
             @Override
             public void onResponse(Call<Subcategory> call, Response<Subcategory> response) {
+                progressDialog.dismiss();
+                if (!response.isSuccessful()){
+                    Toast.makeText(Babarege.this, "response not found", Toast.LENGTH_LONG).show();
+                    Log.i(TAG, response.message());
+                }
 
+                Subcategory subcategory= response.body();
+
+                assert subcategory != null;
+                for (int i = 0; i<subcategory.getData().size(); i++) {
+                    itemTitle.add(subcategory.getData().get(i).getTitle());
+                    itemImage.add(subcategory.getData().get(i).getImage());
+                    itemDescription.add(subcategory.getData().get(i).getDescription());
+                    itemPrize.add(subcategory.getData().get(i).getPrice());
+                    itemStock.add(subcategory.getData().get(i).getStock());
+                }
+                subCategoryItem= new SubCategoryItem(Babarege.this, itemTitle, itemImage, itemDescription, itemPrize, itemStock);
+                foodDataRecycler.setAdapter(subCategoryItem);
             }
 
             @Override
@@ -170,19 +104,6 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
 
             }
         });
-    }
-
-    private void FindAllView(){
-        addToBagInciment= findViewById(R.id.add_to_bag_count_incre);
-        addToBagInciment2= findViewById(R.id.add_to_bag_count_incre2);
-        addToBagDecriment= findViewById(R.id.add_to_bag_count_dec);
-        addToBagDecriment2= findViewById(R.id.add_to_bag_count_dec2);
-        layout= findViewById(R.id.layout_one);
-        layout2= findViewById(R.id.layout_two);
-        addToBagText= findViewById(R.id.add_to_bag_count_text);
-        addToBagText2= findViewById(R.id.add_to_bag_count_text2);
-        productItemCount= findViewById(R.id.product_item_count);
-        productItemCount2= findViewById(R.id.product_item_count2);
     }
 
     @Override
@@ -218,27 +139,4 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
         cartText.setVisibility(View.VISIBLE);
         cartText.setText(String.valueOf(loadCardCount));
     }
-
-    private void ShareStoreData1(){
-        SharedPreferences sharedPref2 = getSharedPreferences("STORE_PRODUCT_DETAILS_DATA", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref2.edit();
-        editor.putInt("productImage",R.drawable.cocacola);
-        editor.putString("productName","Coca Cola");
-        editor.putString("productPrize","৳ 30");
-        editor.putString("productWeight","[ 500 ml ]");
-        editor.putString("productQuantity", String.valueOf(count));
-        editor.commit();
-    }
-
-    private void ShareStoreData2(){
-        SharedPreferences sharedPref2 = getSharedPreferences("STORE_PRODUCT_DETAILS_DATA", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref2.edit();
-        editor.putInt("productImage",R.drawable.pepsi);
-        editor.putString("productName","Pepsi");
-        editor.putString("productPrize","৳ 35");
-        editor.putString("productWeight","[ 500 ml ]");
-        editor.putString("productQuantity", String.valueOf(count2));
-        editor.commit();
-    }
-
 }

@@ -5,7 +5,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClint {
 
-
     public static Retrofit getRetrifitClint(){
         return new Retrofit.Builder()
                 .baseUrl("http://dobajar.regnumit.com/")

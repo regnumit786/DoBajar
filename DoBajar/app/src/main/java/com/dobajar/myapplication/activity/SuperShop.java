@@ -110,8 +110,8 @@ public class SuperShop extends AppCompatActivity {
 
                 SubCategorieModel subCategorieModel= response.body();
 
-                for (int i=0; i<subCategorieModel.getData().size(); i++) {
-
+                assert subCategorieModel != null;
+                for (int i = 0; i<subCategorieModel.getData().size(); i++) {
                     Log.i("ctName", subCategorieModel.getData().get(i).getName());
                     Log.i("ctImage", subCategorieModel.getData().get(i).getImage());
                     Log.i("ctCategories", subCategorieModel.getData().get(i).getCategoryId());
