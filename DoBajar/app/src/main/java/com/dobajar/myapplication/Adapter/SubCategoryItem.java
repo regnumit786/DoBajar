@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dobajar.myapplication.Model.SubCategory.DatumSubCategory;
 import com.dobajar.myapplication.R;
 import com.squareup.picasso.Picasso;
 
@@ -18,19 +19,11 @@ import java.util.List;
 public class SubCategoryItem extends RecyclerView.Adapter<SubCategoryItem.subCategoryViewHolder> {
 
     private Context context;
-    private List<String> title;
-    private List<String> image;
-    private List<String> description;
-    private List<String> prize;
-    private List<String> stock;
+    private List<DatumSubCategory> datumSubCategoryList;
 
-    public SubCategoryItem(Context context, List<String> title, List<String> image, List<String> description, List<String> prize, List<String> stock) {
+    public SubCategoryItem(Context context, List<DatumSubCategory> datumSubCategoryList) {
         this.context = context;
-        this.title = title;
-        this.image = image;
-        this.description = description;
-        this.prize = prize;
-        this.stock = stock;
+        this.datumSubCategoryList = datumSubCategoryList;
     }
 
     @NonNull
@@ -42,12 +35,12 @@ public class SubCategoryItem extends RecyclerView.Adapter<SubCategoryItem.subCat
 
     @Override
     public void onBindViewHolder(@NonNull subCategoryViewHolder holder, int position) {
-        holder.itemTitle.setText(title.get(position));
-        holder.itemDescription.setText(description.get(position));
-        holder.itemPrize.setText(prize.get(position));
-        holder.itemStock.setText(stock.get(position));
+        holder.itemTitle.setText(datumSubCategoryList.get(position).getTitle());
+        holder.itemDescription.setText(datumSubCategoryList.get(position).getDescription());
+        holder.itemPrize.setText(datumSubCategoryList.get(position).getPrice());
+        holder.itemStock.setText(datumSubCategoryList.get(position).getStock());
 
-        String url= image.get(position);
+        String url= datumSubCategoryList.get(position).getImage();
         Picasso.get()
                 .load(url)
                 .error(R.mipmap.ic_launcher)
@@ -57,7 +50,7 @@ public class SubCategoryItem extends RecyclerView.Adapter<SubCategoryItem.subCat
 
     @Override
     public int getItemCount() {
-        return title.size();
+        return datumSubCategoryList.size();
     }
 
     public static class subCategoryViewHolder extends RecyclerView.ViewHolder {

@@ -20,36 +20,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.dobajar.myapplication.Adapter.AllFragmentDataAdpr;
 import com.dobajar.myapplication.Adapter.SubCategoryItem;
 import com.dobajar.myapplication.Card.Cart_activity;
 import com.dobajar.myapplication.Model.Retrofit.ApiClint;
 import com.dobajar.myapplication.Model.Retrofit.RetrofitClint;
+import com.dobajar.myapplication.Model.SubCategory.DatumSubCategory;
 import com.dobajar.myapplication.Model.SubCategory.Subcategory;
 import com.dobajar.myapplication.R;
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Response;
-
 
 public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.OnItemClickListener {
-
-    private final String TAG= this.getClass().getSimpleName();
     private TextView cartText;
     private ImageView cardImage;
-
-    private ArrayList<String> itemTitle;
-    private ArrayList<String> itemImage;
-    private ArrayList<String> itemDescription;
-    private ArrayList<String> itemPrize;
-    private ArrayList<String> itemStock;
+    private static final String JSON_URL = "http://dobajar.regnumit.com/api/Food/subcategorious-products";
     private SubCategoryItem subCategoryItem;
-
-    private ApiClint apiClint;
+    private ArrayList<DatumSubCategory> subcategoriesList;
     private RecyclerView foodDataRecycler;
     private ProgressDialog progressDialog;
 
@@ -58,13 +62,13 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.babarege);
 
-        progressDialog= new ProgressDialog(this);
+        subcategoriesList = new ArrayList<DatumSubCategory>();
+        progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading Data...");
         progressDialog.setCancelable(true);
 
-
         foodDataRecycler = findViewById(R.id.food_data_recycler_view);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2)  ;
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         foodDataRecycler.setLayoutManager(mLayoutManager);
         foodDataRecycler.setHasFixedSize(true);
 
@@ -73,42 +77,56 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
 
     private void LoadSubCategoryData() {
         progressDialog.show();
-        apiClint= RetrofitClint.getRetrifitClint().create(ApiClint.class);
-        Call<Subcategory> call= apiClint.subCategoryList();
-
-        call.enqueue(new Callback<Subcategory>() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest arrayRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(Call<Subcategory> call, Response<Subcategory> response) {
+            public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
-                if (!response.isSuccessful()){
-                    Toast.makeText(Babarege.this, "response not found", Toast.LENGTH_LONG).show();
-                    Log.i(TAG, response.message());
-                }
+                Log.i("Jsonlength", String.valueOf(response.length()));
 
-                Subcategory subcategory= response.body();
+                for (int i = 0; i < response.length(); i++) {
+                    Toast.makeText(Babarege.this, "oky successfully: " + i, Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONArray jsonArray= response.getJSONArray("data");
+                        JSONObject jsonObject= jsonArray.getJSONObject(i);
+                        DatumSubCategory subcategory= new DatumSubCategory();
 
-                assert subcategory != null;
-                for (int i = 0; i<subcategory.getData().size(); i++) {
-                    itemTitle.add(subcategory.getData().get(i).getTitle());
-                    itemImage.add(subcategory.getData().get(i).getImage());
-                    itemDescription.add(subcategory.getData().get(i).getDescription());
-                    itemPrize.add(subcategory.getData().get(i).getPrice());
-                    itemStock.add(subcategory.getData().get(i).getStock());
+                        subcategory.setTitle(jsonObject.getString("title").toString());
+                        subcategory.setImage(jsonObject.getString("image").toString());
+                        subcategory.setDescription(jsonObject.getString("description").toString());
+                        subcategory.setPrice(jsonObject.getString("price").toString());
+                        subcategory.setStock(jsonObject.getString("stock").toString());
+
+                        Log.i("title", subcategory.getTitle().toString());
+                        Log.i("image", subcategory.getImage().toString());
+                        Log.i("description", subcategory.getDescription().toString());
+                        Log.i("price", subcategory.getPrice().toString());
+                        Log.i("stock", subcategory.getStock().toString());
+
+                        subcategoriesList.add(subcategory);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
-                subCategoryItem= new SubCategoryItem(Babarege.this, itemTitle, itemImage, itemDescription, itemPrize, itemStock);
+                subCategoryItem = new SubCategoryItem(Babarege.this, subcategoriesList);
                 foodDataRecycler.setAdapter(subCategoryItem);
             }
-
+        }, new Response.ErrorListener() {
             @Override
-            public void onFailure(Call<Subcategory> call, Throwable t) {
-
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(Babarege.this, "Error is: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.i("Error_is: ", error.getMessage());
             }
         });
+
+        requestQueue.add(arrayRequest);
     }
 
     @Override
     public void OnItemClick(int position) {
-        Intent intent= new Intent(this, ProductDetails.class);
+        Intent intent = new Intent(this, ProductDetails.class);
         startActivity(intent);
     }
 
@@ -116,10 +134,10 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem = menu.findItem(R.id.add_to_card_toolbar);
-        View actionView= menuItem.getActionView();
-        if (actionView!= null) {
-            cartText= actionView.findViewById(R.id.toolbarText);
-            cardImage= actionView.findViewById(R.id.toolberCard);
+        View actionView = menuItem.getActionView();
+        if (actionView != null) {
+            cartText = actionView.findViewById(R.id.toolbarText);
+            cardImage = actionView.findViewById(R.id.toolberCard);
             cartText.setVisibility(View.GONE);
         }
         cardImage.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +151,7 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void LoadCardData(){
+    private void LoadCardData() {
         SharedPreferences sharedPref = getSharedPreferences("UPLOAD_CARD_DATA", Context.MODE_PRIVATE);
         int loadCardCount = sharedPref.getInt("cardCount", 0);
         cartText.setVisibility(View.VISIBLE);
