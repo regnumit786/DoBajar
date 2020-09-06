@@ -158,7 +158,7 @@ public class Login extends AppCompatActivity {
         super.onStart();
         if (sharedPref.contains("USER_STATE")){
             if (USER_STATE==1){
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, SelectLocation.class));
                 finish();
             }
         }

@@ -84,26 +84,33 @@ public class Babarege extends AppCompatActivity implements AllFragmentDataAdpr.O
                 progressDialog.dismiss();
                 Log.i("Jsonlength", String.valueOf(response.length()));
 
-                for (int i = 0; i < response.length(); i++) {
+                for (int i = 0; i < 1; i++) {
                     Toast.makeText(Babarege.this, "oky successfully: " + i, Toast.LENGTH_SHORT).show();
                     try {
                         JSONArray jsonArray= response.getJSONArray("data");
-                        JSONObject jsonObject= jsonArray.getJSONObject(i);
-                        DatumSubCategory subcategory= new DatumSubCategory();
+                        for (int j=0; j<jsonArray.length(); j++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(j);
+                            DatumSubCategory subcategory = new DatumSubCategory();
 
-                        subcategory.setTitle(jsonObject.getString("title").toString());
-                        subcategory.setImage(jsonObject.getString("image").toString());
-                        subcategory.setDescription(jsonObject.getString("description").toString());
-                        subcategory.setPrice(jsonObject.getString("price").toString());
-                        subcategory.setStock(jsonObject.getString("stock").toString());
+                            subcategory.setTitle(jsonObject.getString("title").toString());
+                            JSONArray jsonImageArray= jsonObject.getJSONArray("image");
+                            Log.i("Jsonimagelength", String.valueOf(jsonImageArray.length()));
+                            for (int k=0; k<jsonImageArray.length(); k++) {
+                                String imagePath= jsonImageArray.getString(k).toString();
+                                Log.i("imagePathString", imagePath);
+                                subcategory.setImage(imagePath);
+                            }
+                            subcategory.setDescription(jsonObject.getString("description").toString());
+                            subcategory.setPrice(jsonObject.getString("price").toString());
+                            subcategory.setStock(jsonObject.getString("stock").toString());
 
-                        Log.i("title", subcategory.getTitle().toString());
-                        Log.i("image", subcategory.getImage().toString());
-                        Log.i("description", subcategory.getDescription().toString());
-                        Log.i("price", subcategory.getPrice().toString());
-                        Log.i("stock", subcategory.getStock().toString());
+                            Log.i("title", subcategory.getTitle().toString());
+                            Log.i("description", subcategory.getDescription().toString());
+                            Log.i("price", subcategory.getPrice().toString());
+                            Log.i("stock", subcategory.getStock().toString());
 
-                        subcategoriesList.add(subcategory);
+                            subcategoriesList.add(subcategory);
+                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();

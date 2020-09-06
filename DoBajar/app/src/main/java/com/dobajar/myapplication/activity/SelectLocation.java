@@ -51,6 +51,7 @@ public class SelectLocation extends FragmentActivity implements OnMapReadyCallba
     private TextView txtShowAddress;
     private String strAdd = "";
     private int countAddress=0;
+    private SharedPreferences preferences;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -97,6 +98,17 @@ public class SelectLocation extends FragmentActivity implements OnMapReadyCallba
                 }
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (!strAdd.isEmpty()){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        } else {
+            Toast.makeText(this, "Address Found", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
